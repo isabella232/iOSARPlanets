@@ -17,11 +17,11 @@ class Planet {
     static let ALL_PLANETS: [Planet] = [SUN, EARTH, MARS]
     
     private(set) var name: String
-    private(set) var orbitRadius: Double
-    private(set) var orbitPeriod: Double
-    private(set) var planetRadius: Double
-    private(set) var planetPeriod: Double
-    private(set) var parent: Planet?
+    private(set) var orbitRadius: Double // Average distance from sun in meters
+    private(set) var orbitPeriod: Double // Average orbit time in seconds
+    private(set) var planetRadius: Double // Average planet radius in meters
+    private(set) var planetPeriod: Double // Rotation on planet in seconds (a day)
+    private(set) var parent: Planet? // Which body it orbits
     private(set) var image: UIImage?
     
     init(name: String, image: UIImage?, orbitRadius: Double, orbitPeriod: Double, planetRadius: Double, planetPeriod: Double, parent: Planet?) {
