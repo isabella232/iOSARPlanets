@@ -14,6 +14,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    private let scaleSpace: Double = 0.00000000001
+    private let scaleSize: Double = 0.000001
+    private let scaleTime: Double = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,12 +26,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        sceneView.antialiasingMode = .multisampling4X
+
+        let planetScene = SCNScene()
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        for planet in Planet.ALL_PLANETS {
+            let material = SCNMaterial()
+            material.name = planet.name
+            material.diffuse.contents = planet.image
+            
+            let sphere = SCNNode(geometry: SCNSphere(radius: 0.2))
+            sphere.geometry?.materials = [material]
+            sphere.position = SCNVector3Make(0, 0, (Float)(planet.orbitRadius * scaleSpace))
+            
+            planetScene.rootNode.addChildNode(sphere)
+        }
         
         // Set the scene to the view
-        sceneView.scene = scene
+        sceneView.scene = planetScene
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,36 +61,5 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
     }
 }

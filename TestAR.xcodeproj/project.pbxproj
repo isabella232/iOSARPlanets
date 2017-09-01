@@ -13,6 +13,33 @@
 		DC40E61A1F4D223A0060D2BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6181F4D223A0060D2BA /* Main.storyboard */; };
 		DC40E61C1F4D223A0060D2BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC40E61B1F4D223A0060D2BA /* Assets.xcassets */; };
 		DC40E61F1F4D223A0060D2BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC40E61D1F4D223A0060D2BA /* LaunchScreen.storyboard */; };
+		DC40E6581F4DEA7D0060D2BA /* CallistoColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6331F4DEA6A0060D2BA /* CallistoColor.png */; };
+		DC40E6591F4DEA7D0060D2BA /* CharonColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6341F4DEA6A0060D2BA /* CharonColor.png */; };
+		DC40E65A1F4DEA7D0060D2BA /* DeimosColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62F1F4DEA690060D2BA /* DeimosColor.png */; };
+		DC40E65B1F4DEA7D0060D2BA /* DioneColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6281F4DEA680060D2BA /* DioneColor.png */; };
+		DC40E65C1F4DEA7D0060D2BA /* EnceladusColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62D1F4DEA690060D2BA /* EnceladusColor.png */; };
+		DC40E65D1F4DEA7D0060D2BA /* Planet.dae in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62A1F4DEA680060D2BA /* Planet.dae */; };
+		DC40E65E1F4DEA7D0060D2BA /* EuropaColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E63B1F4DEA6C0060D2BA /* EuropaColor.png */; };
+		DC40E65F1F4DEA7D0060D2BA /* GanymedeColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62B1F4DEA680060D2BA /* GanymedeColor.png */; };
+		DC40E6601F4DEA7D0060D2BA /* IapetusColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6381F4DEA6B0060D2BA /* IapetusColor.png */; };
+		DC40E6611F4DEA7D0060D2BA /* IoColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62C1F4DEA690060D2BA /* IoColor.png */; };
+		DC40E6621F4DEA7D0060D2BA /* JupiterColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E63C1F4DEA6C0060D2BA /* JupiterColor.png */; };
+		DC40E6631F4DEA7D0060D2BA /* MarsColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6351F4DEA6B0060D2BA /* MarsColor.png */; };
+		DC40E6641F4DEA7D0060D2BA /* MercuryColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6301F4DEA6A0060D2BA /* MercuryColor.png */; };
+		DC40E6651F4DEA7D0060D2BA /* MimasColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6321F4DEA6A0060D2BA /* MimasColor.png */; };
+		DC40E6661F4DEA7D0060D2BA /* MoonColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6271F4DEA670060D2BA /* MoonColor.png */; };
+		DC40E6671F4DEA7D0060D2BA /* NeptuneColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E63E1F4DEA6D0060D2BA /* NeptuneColor.png */; };
+		DC40E6681F4DEA7D0060D2BA /* PhobosColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6361F4DEA6B0060D2BA /* PhobosColor.png */; };
+		DC40E6691F4DEA7D0060D2BA /* PlutoColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6391F4DEA6C0060D2BA /* PlutoColor.png */; };
+		DC40E66A1F4DEA7D0060D2BA /* RheaColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6311F4DEA6A0060D2BA /* RheaColor.png */; };
+		DC40E66B1F4DEA7D0060D2BA /* SaturnColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6261F4DEA670060D2BA /* SaturnColor.png */; };
+		DC40E66C1F4DEA7D0060D2BA /* TethysColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6291F4DEA680060D2BA /* TethysColor.png */; };
+		DC40E66D1F4DEA7D0060D2BA /* TitanColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6371F4DEA6B0060D2BA /* TitanColor.png */; };
+		DC40E66E1F4DEA7D0060D2BA /* TritonColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62E1F4DEA690060D2BA /* TritonColor.png */; };
+		DC40E66F1F4DEA7D0060D2BA /* UranusColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E63A1F4DEA6C0060D2BA /* UranusColor.png */; };
+		DC40E6701F4DEA7D0060D2BA /* VenusColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E63D1F4DEA6C0060D2BA /* VenusColor.png */; };
+		DC40E6721F59AEFC0060D2BA /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40E6711F59AEFC0060D2BA /* Planet.swift */; };
+		DC40E6741F59B92D0060D2BA /* Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6731F59B92D0060D2BA /* Earth.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +51,33 @@
 		DC40E61B1F4D223A0060D2BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC40E61E1F4D223A0060D2BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC40E6201F4D223A0060D2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC40E6261F4DEA670060D2BA /* SaturnColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaturnColor.png; sourceTree = "<group>"; };
+		DC40E6271F4DEA670060D2BA /* MoonColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoonColor.png; sourceTree = "<group>"; };
+		DC40E6281F4DEA680060D2BA /* DioneColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DioneColor.png; sourceTree = "<group>"; };
+		DC40E6291F4DEA680060D2BA /* TethysColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TethysColor.png; sourceTree = "<group>"; };
+		DC40E62A1F4DEA680060D2BA /* Planet.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = Planet.dae; sourceTree = "<group>"; };
+		DC40E62B1F4DEA680060D2BA /* GanymedeColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GanymedeColor.png; sourceTree = "<group>"; };
+		DC40E62C1F4DEA690060D2BA /* IoColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IoColor.png; sourceTree = "<group>"; };
+		DC40E62D1F4DEA690060D2BA /* EnceladusColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnceladusColor.png; sourceTree = "<group>"; };
+		DC40E62E1F4DEA690060D2BA /* TritonColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TritonColor.png; sourceTree = "<group>"; };
+		DC40E62F1F4DEA690060D2BA /* DeimosColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeimosColor.png; sourceTree = "<group>"; };
+		DC40E6301F4DEA6A0060D2BA /* MercuryColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MercuryColor.png; sourceTree = "<group>"; };
+		DC40E6311F4DEA6A0060D2BA /* RheaColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RheaColor.png; sourceTree = "<group>"; };
+		DC40E6321F4DEA6A0060D2BA /* MimasColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MimasColor.png; sourceTree = "<group>"; };
+		DC40E6331F4DEA6A0060D2BA /* CallistoColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CallistoColor.png; sourceTree = "<group>"; };
+		DC40E6341F4DEA6A0060D2BA /* CharonColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CharonColor.png; sourceTree = "<group>"; };
+		DC40E6351F4DEA6B0060D2BA /* MarsColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MarsColor.png; sourceTree = "<group>"; };
+		DC40E6361F4DEA6B0060D2BA /* PhobosColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhobosColor.png; sourceTree = "<group>"; };
+		DC40E6371F4DEA6B0060D2BA /* TitanColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TitanColor.png; sourceTree = "<group>"; };
+		DC40E6381F4DEA6B0060D2BA /* IapetusColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IapetusColor.png; sourceTree = "<group>"; };
+		DC40E6391F4DEA6C0060D2BA /* PlutoColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlutoColor.png; sourceTree = "<group>"; };
+		DC40E63A1F4DEA6C0060D2BA /* UranusColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UranusColor.png; sourceTree = "<group>"; };
+		DC40E63B1F4DEA6C0060D2BA /* EuropaColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EuropaColor.png; sourceTree = "<group>"; };
+		DC40E63C1F4DEA6C0060D2BA /* JupiterColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JupiterColor.png; sourceTree = "<group>"; };
+		DC40E63D1F4DEA6C0060D2BA /* VenusColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VenusColor.png; sourceTree = "<group>"; };
+		DC40E63E1F4DEA6D0060D2BA /* NeptuneColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NeptuneColor.png; sourceTree = "<group>"; };
+		DC40E6711F59AEFC0060D2BA /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		DC40E6731F59B92D0060D2BA /* Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Earth.jpg; path = /Users/justinreid/Desktop/TestAR/TestAR/Earth.jpg; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +110,40 @@
 		DC40E6111F4D223A0060D2BA /* TestAR */ = {
 			isa = PBXGroup;
 			children = (
+				DC40E6731F59B92D0060D2BA /* Earth.jpg */,
 				DC40E6121F4D223A0060D2BA /* AppDelegate.swift */,
 				DC40E6141F4D223A0060D2BA /* art.scnassets */,
 				DC40E6161F4D223A0060D2BA /* ViewController.swift */,
+				DC40E6331F4DEA6A0060D2BA /* CallistoColor.png */,
+				DC40E6341F4DEA6A0060D2BA /* CharonColor.png */,
+				DC40E62F1F4DEA690060D2BA /* DeimosColor.png */,
+				DC40E6281F4DEA680060D2BA /* DioneColor.png */,
+				DC40E62D1F4DEA690060D2BA /* EnceladusColor.png */,
+				DC40E62A1F4DEA680060D2BA /* Planet.dae */,
+				DC40E63B1F4DEA6C0060D2BA /* EuropaColor.png */,
+				DC40E62B1F4DEA680060D2BA /* GanymedeColor.png */,
+				DC40E6381F4DEA6B0060D2BA /* IapetusColor.png */,
+				DC40E62C1F4DEA690060D2BA /* IoColor.png */,
+				DC40E63C1F4DEA6C0060D2BA /* JupiterColor.png */,
+				DC40E6351F4DEA6B0060D2BA /* MarsColor.png */,
+				DC40E6301F4DEA6A0060D2BA /* MercuryColor.png */,
+				DC40E6321F4DEA6A0060D2BA /* MimasColor.png */,
+				DC40E6271F4DEA670060D2BA /* MoonColor.png */,
+				DC40E63E1F4DEA6D0060D2BA /* NeptuneColor.png */,
+				DC40E6361F4DEA6B0060D2BA /* PhobosColor.png */,
+				DC40E6391F4DEA6C0060D2BA /* PlutoColor.png */,
+				DC40E6311F4DEA6A0060D2BA /* RheaColor.png */,
+				DC40E6261F4DEA670060D2BA /* SaturnColor.png */,
+				DC40E6291F4DEA680060D2BA /* TethysColor.png */,
+				DC40E6371F4DEA6B0060D2BA /* TitanColor.png */,
+				DC40E62E1F4DEA690060D2BA /* TritonColor.png */,
+				DC40E63A1F4DEA6C0060D2BA /* UranusColor.png */,
+				DC40E63D1F4DEA6C0060D2BA /* VenusColor.png */,
 				DC40E6181F4D223A0060D2BA /* Main.storyboard */,
 				DC40E61B1F4D223A0060D2BA /* Assets.xcassets */,
 				DC40E61D1F4D223A0060D2BA /* LaunchScreen.storyboard */,
 				DC40E6201F4D223A0060D2BA /* Info.plist */,
+				DC40E6711F59AEFC0060D2BA /* Planet.swift */,
 			);
 			path = TestAR;
 			sourceTree = "<group>";
@@ -126,10 +207,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC40E65E1F4DEA7D0060D2BA /* EuropaColor.png in Resources */,
+				DC40E6671F4DEA7D0060D2BA /* NeptuneColor.png in Resources */,
+				DC40E6581F4DEA7D0060D2BA /* CallistoColor.png in Resources */,
+				DC40E66F1F4DEA7D0060D2BA /* UranusColor.png in Resources */,
+				DC40E6681F4DEA7D0060D2BA /* PhobosColor.png in Resources */,
+				DC40E6631F4DEA7D0060D2BA /* MarsColor.png in Resources */,
+				DC40E66C1F4DEA7D0060D2BA /* TethysColor.png in Resources */,
+				DC40E6651F4DEA7D0060D2BA /* MimasColor.png in Resources */,
+				DC40E66B1F4DEA7D0060D2BA /* SaturnColor.png in Resources */,
 				DC40E6151F4D223A0060D2BA /* art.scnassets in Resources */,
+				DC40E6661F4DEA7D0060D2BA /* MoonColor.png in Resources */,
+				DC40E6621F4DEA7D0060D2BA /* JupiterColor.png in Resources */,
+				DC40E6611F4DEA7D0060D2BA /* IoColor.png in Resources */,
+				DC40E65A1F4DEA7D0060D2BA /* DeimosColor.png in Resources */,
+				DC40E66A1F4DEA7D0060D2BA /* RheaColor.png in Resources */,
+				DC40E66D1F4DEA7D0060D2BA /* TitanColor.png in Resources */,
 				DC40E61F1F4D223A0060D2BA /* LaunchScreen.storyboard in Resources */,
+				DC40E66E1F4DEA7D0060D2BA /* TritonColor.png in Resources */,
+				DC40E65F1F4DEA7D0060D2BA /* GanymedeColor.png in Resources */,
+				DC40E65D1F4DEA7D0060D2BA /* Planet.dae in Resources */,
+				DC40E6701F4DEA7D0060D2BA /* VenusColor.png in Resources */,
 				DC40E61C1F4D223A0060D2BA /* Assets.xcassets in Resources */,
+				DC40E6591F4DEA7D0060D2BA /* CharonColor.png in Resources */,
+				DC40E6601F4DEA7D0060D2BA /* IapetusColor.png in Resources */,
+				DC40E65C1F4DEA7D0060D2BA /* EnceladusColor.png in Resources */,
+				DC40E6691F4DEA7D0060D2BA /* PlutoColor.png in Resources */,
+				DC40E6641F4DEA7D0060D2BA /* MercuryColor.png in Resources */,
 				DC40E61A1F4D223A0060D2BA /* Main.storyboard in Resources */,
+				DC40E65B1F4DEA7D0060D2BA /* DioneColor.png in Resources */,
+				DC40E6741F59B92D0060D2BA /* Earth.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC40E6721F59AEFC0060D2BA /* Planet.swift in Sources */,
 				DC40E6171F4D223A0060D2BA /* ViewController.swift in Sources */,
 				DC40E6131F4D223A0060D2BA /* AppDelegate.swift in Sources */,
 			);
@@ -279,10 +387,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DGDWQPSWV;
+				DEVELOPMENT_TEAM = 4948PJ93Q9;
 				INFOPLIST_FILE = TestAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jreid.TestAR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skookum.ARTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -294,10 +402,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DGDWQPSWV;
+				DEVELOPMENT_TEAM = 4948PJ93Q9;
 				INFOPLIST_FILE = TestAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jreid.TestAR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skookum.ARTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
