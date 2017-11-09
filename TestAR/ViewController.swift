@@ -14,9 +14,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    private let scaleSpace: Double = 0.00000000001
-    private let scaleSize: Double = 0.000001
-    private let scaleTime: Double = 10
+    private let systemSize: Float = 6
+    private let planetSize: Float = 0.15
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,25 +24,44 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        //sceneView.showsStatistics = true
         sceneView.antialiasingMode = .multisampling4X
 
-        let planetScene = SCNScene()
+        let sunNode = createPlanet(planet: Planet.SUN, planetScale: planetSize, systemScale: systemSize)
+        createSatellites(parentPlanet: Planet.SUN, parentNode: sunNode, planetScale: planetSize, systemScale: systemSize)
         
-        for planet in Planet.ALL_PLANETS {
-            let material = SCNMaterial()
-            material.name = planet.name
-            material.diffuse.contents = planet.image
-            
-            let sphere = SCNNode(geometry: SCNSphere(radius: 0.2))
-            sphere.geometry?.materials = [material]
-            sphere.position = SCNVector3Make(0, 0, (Float)(planet.orbitRadius * scaleSpace))
-            
-            planetScene.rootNode.addChildNode(sphere)
-        }
+        let planetScene = SCNScene()
+        planetScene.rootNode.addChildNode(sunNode)
         
         // Set the scene to the view
         sceneView.scene = planetScene
+        sceneView.scene.rootNode.position = SCNVector3Make(0, -3, 0)
+    }
+    
+    fileprivate func createSatellites(parentPlanet: Planet, parentNode: SCNNode, planetScale: Float, systemScale: Float) {
+        let surfaceRadius = parentPlanet.scaledRadius(planetSize: planetSize)
+        
+        for child in parentPlanet.children {
+            let node = createPlanet(planet: child, planetScale: planetScale, systemScale: systemScale)
+            
+            createSatellites(parentPlanet: child, parentNode: node, planetScale: planetScale, systemScale: systemScale)
+            
+            let offset = child.scaledOrbit(solarSystemSize: systemSize) + surfaceRadius
+            node.position = SCNVector3Make(0, 0, -offset)
+            
+            parentNode.addChildNode(node)
+        }
+    }
+    
+    fileprivate func createPlanet(planet: Planet, planetScale: Float, systemScale: Float) -> SCNNode {
+        let material = SCNMaterial()
+        material.name = planet.name
+        material.diffuse.contents = planet.image
+        
+        let sphere = SCNNode(geometry: SCNSphere(radius: CGFloat(planet.scaledRadius(planetSize: planetScale))))
+        sphere.geometry?.materials = [material]
+        
+        return sphere
     }
     
     override func viewWillAppear(_ animated: Bool) {
