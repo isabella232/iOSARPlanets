@@ -14,9 +14,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    private let systemSize: Float = 6
-    private let planetSize: Float = 0.15
-    
+    private let systemSize: Float = 24
+    private let planetSize: Float = 0.1
+    private let timeScale: Float = 240
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,41 +28,103 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //sceneView.showsStatistics = true
         sceneView.antialiasingMode = .multisampling4X
 
-        let sunNode = createPlanet(planet: Planet.SUN, planetScale: planetSize, systemScale: systemSize)
-        createSatellites(parentPlanet: Planet.SUN, parentNode: sunNode, planetScale: planetSize, systemScale: systemSize)
-        
         let planetScene = SCNScene()
+        
+        let sunNode = createPlanet(planet: Planet.SUN, planetScale: planetSize, systemScale: systemSize)
         planetScene.rootNode.addChildNode(sunNode)
+        Planet.SUN.node = planetScene.rootNode
+        
+        createSatellites(parentPlanet: Planet.SUN, parentNode: planetScene.rootNode, planetScale: planetSize, systemScale: systemSize)
+        animate(planet: Planet.SUN, timeScale: timeScale)
         
         // Set the scene to the view
         sceneView.scene = planetScene
         sceneView.scene.rootNode.position = SCNVector3Make(0, -3, 0)
+        sceneView.scene.background.contents = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    }
+    
+    fileprivate func animate(planet: Planet, timeScale: Float) {
+        if let orbitNode = planet.node {
+            let animation = createOrbitAnimation(planet: planet, timeScale: timeScale)
+            orbitNode.addAnimation(animation, forKey: "ORBIT")
+        }
+        if let comNode = planet.node?.childNode(withName: "\(planet.name)_Surface", recursively: true) {
+            let animation = createRotationAnimation(planet: planet, timeScale: timeScale/365)
+            comNode.addAnimation(animation, forKey: "ROTATION")
+        }
+        
+        for child in planet.children {
+            animate(planet: child, timeScale: timeScale)
+        }
+    }
+    
+    fileprivate func createOrbitAnimation(planet: Planet, timeScale: Float) -> CABasicAnimation {
+        let orbit = CABasicAnimation(keyPath: "rotation")
+        orbit.fromValue = NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0))
+        orbit.toValue = NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float.pi * 2))
+        orbit.duration = planet.scaledOrbitPeriod(timeScale: timeScale)
+        orbit.repeatCount = .infinity
+        
+        return orbit
+    }
+    
+    fileprivate func createRotationAnimation(planet: Planet, timeScale: Float) -> CABasicAnimation {
+        let orbit = CABasicAnimation(keyPath: "rotation")
+        orbit.fromValue = NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0))
+        orbit.toValue = NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float.pi * 2))
+        orbit.duration = planet.scaledRotationPeriod(timeScale: timeScale)
+        orbit.repeatCount = .infinity
+        
+        return orbit
     }
     
     fileprivate func createSatellites(parentPlanet: Planet, parentNode: SCNNode, planetScale: Float, systemScale: Float) {
-        let surfaceRadius = parentPlanet.scaledRadius(planetSize: planetSize)
+        let scaledSurface = parentPlanet.scaledRadius(planetSize: planetScale)
         
         for child in parentPlanet.children {
-            let node = createPlanet(planet: child, planetScale: planetScale, systemScale: systemScale)
+            // Node representing center of mass for planet
+            let massNode = createPlanet(planet: child, planetScale: planetScale, systemScale: systemScale)
             
-            createSatellites(parentPlanet: child, parentNode: node, planetScale: planetScale, systemScale: systemScale)
+            // Position away from parent
+            let offset = child.scaledOrbit(solarSystemSize: systemSize) + scaledSurface
+            massNode.position = SCNVector3Make(0, 0, -offset)
             
-            let offset = child.scaledOrbit(solarSystemSize: systemSize) + surfaceRadius
-            node.position = SCNVector3Make(0, 0, -offset)
+            // Create node for rotating to emmulate "orbiting"
+            let orbitNode = SCNNode()
+            orbitNode.name = "\(child.name)_Orbit"
+            orbitNode.addChildNode(massNode)
+            child.node = orbitNode
             
-            parentNode.addChildNode(node)
+            parentNode.addChildNode(orbitNode)
+            
+            createSatellites(parentPlanet: child, parentNode: massNode, planetScale: planetScale, systemScale: systemScale)
         }
     }
     
     fileprivate func createPlanet(planet: Planet, planetScale: Float, systemScale: Float) -> SCNNode {
+        let scaledRadius = planet.scaledRadius(planetSize: planetScale)
+        
         let material = SCNMaterial()
         material.name = planet.name
         material.diffuse.contents = planet.image
         
-        let sphere = SCNNode(geometry: SCNSphere(radius: CGFloat(planet.scaledRadius(planetSize: planetScale))))
-        sphere.geometry?.materials = [material]
+        let centerOfMass = SCNNode()
+        centerOfMass.name = "\(planet.name)_CoM"
         
-        return sphere
+        let textGeometry = SCNText(string: planet.name, extrusionDepth: 0.1)
+        textGeometry.flatness = 0.1
+        
+        let text = SCNNode(geometry: textGeometry)
+        text.position = SCNVector3Make(0, scaledRadius + 0.01, 0)
+        text.scale = SCNVector3Make(0.01, 0.01, 0.01)
+        centerOfMass.addChildNode(text)
+        
+        let sphere = SCNNode(geometry: SCNSphere(radius: CGFloat(scaledRadius)))
+        sphere.geometry?.materials = [material]
+        sphere.name = "\(planet.name)_Surface"
+        
+        centerOfMass.addChildNode(sphere)
+        return centerOfMass
     }
     
     override func viewWillAppear(_ animated: Bool) {
