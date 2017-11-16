@@ -112,11 +112,24 @@
 		DC40E6111F4D223A0060D2BA /* TestAR */ = {
 			isa = PBXGroup;
 			children = (
+				DC50E4BD1FBE309E00AE9FD0 /* PlanetObject */,
+				DC40E6121F4D223A0060D2BA /* AppDelegate.swift */,
+				DC40E6161F4D223A0060D2BA /* ViewController.swift */,
+				DC40E6181F4D223A0060D2BA /* Main.storyboard */,
+				DC40E61B1F4D223A0060D2BA /* Assets.xcassets */,
+				DC40E61D1F4D223A0060D2BA /* LaunchScreen.storyboard */,
+				DC40E6201F4D223A0060D2BA /* Info.plist */,
+				DC40E6711F59AEFC0060D2BA /* Planet.swift */,
+			);
+			path = TestAR;
+			sourceTree = "<group>";
+		};
+		DC50E4BD1FBE309E00AE9FD0 /* PlanetObject */ = {
+			isa = PBXGroup;
+			children = (
 				DCB0EEC21FB4F332007ED794 /* sun.jpg */,
 				DCB0EEBF1FB4E4B6007ED794 /* Earth.jpg */,
 				DCB0EEBE1FB4E4B6007ED794 /* EarthColor.png */,
-				DC40E6121F4D223A0060D2BA /* AppDelegate.swift */,
-				DC40E6161F4D223A0060D2BA /* ViewController.swift */,
 				DC40E6331F4DEA6A0060D2BA /* CallistoColor.png */,
 				DC40E6341F4DEA6A0060D2BA /* CharonColor.png */,
 				DC40E62F1F4DEA690060D2BA /* DeimosColor.png */,
@@ -142,13 +155,8 @@
 				DC40E62E1F4DEA690060D2BA /* TritonColor.png */,
 				DC40E63A1F4DEA6C0060D2BA /* UranusColor.png */,
 				DC40E63D1F4DEA6C0060D2BA /* VenusColor.png */,
-				DC40E6181F4D223A0060D2BA /* Main.storyboard */,
-				DC40E61B1F4D223A0060D2BA /* Assets.xcassets */,
-				DC40E61D1F4D223A0060D2BA /* LaunchScreen.storyboard */,
-				DC40E6201F4D223A0060D2BA /* Info.plist */,
-				DC40E6711F59AEFC0060D2BA /* Planet.swift */,
 			);
-			path = TestAR;
+			path = PlanetObject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
