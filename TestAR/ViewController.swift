@@ -29,21 +29,24 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             return
         }
         
-        let iconLocations = manager.update(renderer: renderer, systemTime: time, camera: camera)
+        guard let skScene = sceneView.overlaySKScene else {
+            return
+        }
         
-        DispatchQueue.main.async {
-            self.view.layer.sublayers = []
-            for location in iconLocations {
-                let icon = CAShapeLayer()
-                let radius: CGFloat = 10.0
-                
-                icon.path = UIBezierPath(roundedRect: CGRect(x: -radius, y: -radius, width: 2.0 * radius, height: 2.0 * radius), cornerRadius: radius).cgPath
-                icon.position = location
-                icon.strokeColor = UIColor.white.cgColor
-                icon.fillColor = UIColor.clear.cgColor
-                
-                self.view.layer.addSublayer(icon)
-            }
+        let iconLocations = manager.update(renderer: renderer, systemTime: time, camera: camera)
+        skScene.removeAllChildren()
+
+        for location in iconLocations {
+            let node = SKShapeNode(circleOfRadius: 10)
+            node.position = CGPoint(x: location.x, y: skScene.size.height - location.y)
+            
+            //let radius: CGFloat = 10.0
+            //node.path = UIBezierPath(roundedRect: CGRect(x: -radius, y: -radius, width: 2.0 * radius, height: 2.0 * radius), cornerRadius: radius).cgPath
+            node.strokeColor = UIColor.white
+            node.fillColor = UIColor.clear
+            node.lineWidth = 1
+
+            skScene.addChild(node)
         }
     }
 
@@ -65,6 +68,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         sceneView.scene = SCNScene()
         sceneView.scene.background.contents = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         sceneView.scene.rootNode.addChildNode(manager.rootNode)
+        sceneView.overlaySKScene = SKScene(size: sceneView.frame.size)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTap(sender:)))
         tapGesture.numberOfTapsRequired = 1

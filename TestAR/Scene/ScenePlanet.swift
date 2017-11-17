@@ -115,14 +115,13 @@ class ScenePlanet {
         
         return textParentNode
     }
-    
     func setScale(_ planetScale: Float) {
         let scaledRadius = planet.scaledRadius(planetSize: planetScale)
         planetNode.scale = SCNVector3Make(scaledRadius, scaledRadius, scaledRadius)
         
         let (textMin, textMax) = textGeometry.boundingBox
         let textWidth = textMax.x - textMin.x
-        let desiredTextWidth = max(scaledRadius * 4, 0.5)
+        let desiredTextWidth = max(scaledRadius * 4, 0.05)
         let textScale = desiredTextWidth / textWidth
         textNode.childNodes[0].scale = SCNVector3Make(textScale, textScale, textScale)
         
