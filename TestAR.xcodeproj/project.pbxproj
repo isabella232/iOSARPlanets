@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0421AA7322496B5F03BF9D25 /* Pods_TestAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05D099C127197D09825E72C /* Pods_TestAR.framework */; };
 		DC40E6131F4D223A0060D2BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40E6121F4D223A0060D2BA /* AppDelegate.swift */; };
 		DC40E6171F4D223A0060D2BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40E6161F4D223A0060D2BA /* ViewController.swift */; };
 		DC40E61A1F4D223A0060D2BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6181F4D223A0060D2BA /* Main.storyboard */; };
@@ -38,12 +39,16 @@
 		DC40E66F1F4DEA7D0060D2BA /* UranusColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E63A1F4DEA6C0060D2BA /* UranusColor.png */; };
 		DC40E6701F4DEA7D0060D2BA /* VenusColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E63D1F4DEA6C0060D2BA /* VenusColor.png */; };
 		DC40E6721F59AEFC0060D2BA /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40E6711F59AEFC0060D2BA /* Planet.swift */; };
+		DC50E4C01FBF302000AE9FD0 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC50E4BF1FBF302000AE9FD0 /* SceneManager.swift */; };
+		DC50E4C21FBF357700AE9FD0 /* ScenePlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC50E4C11FBF357700AE9FD0 /* ScenePlanet.swift */; };
+		DC50E4C41FBF5AD100AE9FD0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4C31FBF5AD100AE9FD0 /* Icon.png */; };
 		DCB0EEC01FB4E4B6007ED794 /* EarthColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEBE1FB4E4B6007ED794 /* EarthColor.png */; };
 		DCB0EEC11FB4E4B6007ED794 /* Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEBF1FB4E4B6007ED794 /* Earth.jpg */; };
 		DCB0EEC31FB4F332007ED794 /* sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEC21FB4F332007ED794 /* sun.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43A4460EF3CDE7C97BAE4406 /* Pods-TestAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestAR/Pods-TestAR.release.xcconfig"; sourceTree = "<group>"; };
 		DC40E60F1F4D22390060D2BA /* TestAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC40E6121F4D223A0060D2BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC40E6161F4D223A0060D2BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,9 +82,14 @@
 		DC40E63D1F4DEA6C0060D2BA /* VenusColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VenusColor.png; sourceTree = "<group>"; };
 		DC40E63E1F4DEA6D0060D2BA /* NeptuneColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NeptuneColor.png; sourceTree = "<group>"; };
 		DC40E6711F59AEFC0060D2BA /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		DC50E4BF1FBF302000AE9FD0 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
+		DC50E4C11FBF357700AE9FD0 /* ScenePlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePlanet.swift; sourceTree = "<group>"; };
+		DC50E4C31FBF5AD100AE9FD0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		DCB0EEBE1FB4E4B6007ED794 /* EarthColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EarthColor.png; sourceTree = "<group>"; };
 		DCB0EEBF1FB4E4B6007ED794 /* Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Earth.jpg; sourceTree = "<group>"; };
 		DCB0EEC21FB4F332007ED794 /* sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sun.jpg; sourceTree = "<group>"; };
+		E607909C0D5A4A9E3E8DB719 /* Pods-TestAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestAR/Pods-TestAR.debug.xcconfig"; sourceTree = "<group>"; };
+		F05D099C127197D09825E72C /* Pods_TestAR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,17 +97,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0421AA7322496B5F03BF9D25 /* Pods_TestAR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55695EC5BFCC15084E42DA4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F05D099C127197D09825E72C /* Pods_TestAR.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64FA24F95E6504E9671067A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E607909C0D5A4A9E3E8DB719 /* Pods-TestAR.debug.xcconfig */,
+				43A4460EF3CDE7C97BAE4406 /* Pods-TestAR.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DC40E6061F4D22390060D2BA = {
 			isa = PBXGroup;
 			children = (
 				DC40E6111F4D223A0060D2BA /* TestAR */,
 				DC40E6101F4D22390060D2BA /* Products */,
+				64FA24F95E6504E9671067A0 /* Pods */,
+				55695EC5BFCC15084E42DA4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +142,7 @@
 		DC40E6111F4D223A0060D2BA /* TestAR */ = {
 			isa = PBXGroup;
 			children = (
+				DC50E4BE1FBF2FFE00AE9FD0 /* Scene */,
 				DC50E4BD1FBE309E00AE9FD0 /* PlanetObject */,
 				DC40E6121F4D223A0060D2BA /* AppDelegate.swift */,
 				DC40E6161F4D223A0060D2BA /* ViewController.swift */,
@@ -119,7 +150,6 @@
 				DC40E61B1F4D223A0060D2BA /* Assets.xcassets */,
 				DC40E61D1F4D223A0060D2BA /* LaunchScreen.storyboard */,
 				DC40E6201F4D223A0060D2BA /* Info.plist */,
-				DC40E6711F59AEFC0060D2BA /* Planet.swift */,
 			);
 			path = TestAR;
 			sourceTree = "<group>";
@@ -127,6 +157,7 @@
 		DC50E4BD1FBE309E00AE9FD0 /* PlanetObject */ = {
 			isa = PBXGroup;
 			children = (
+				DC50E4C31FBF5AD100AE9FD0 /* Icon.png */,
 				DCB0EEC21FB4F332007ED794 /* sun.jpg */,
 				DCB0EEBF1FB4E4B6007ED794 /* Earth.jpg */,
 				DCB0EEBE1FB4E4B6007ED794 /* EarthColor.png */,
@@ -159,6 +190,16 @@
 			path = PlanetObject;
 			sourceTree = "<group>";
 		};
+		DC50E4BE1FBF2FFE00AE9FD0 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				DC40E6711F59AEFC0060D2BA /* Planet.swift */,
+				DC50E4BF1FBF302000AE9FD0 /* SceneManager.swift */,
+				DC50E4C11FBF357700AE9FD0 /* ScenePlanet.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC40E6231F4D223A0060D2BA /* Build configuration list for PBXNativeTarget "TestAR" */;
 			buildPhases = (
+				57768A2C8DF9340012F63E4B /* [CP] Check Pods Manifest.lock */,
 				DC40E60B1F4D22390060D2BA /* Sources */,
 				DC40E60C1F4D22390060D2BA /* Frameworks */,
 				DC40E60D1F4D22390060D2BA /* Resources */,
+				90F12971B267195C2D4C1461 /* [CP] Embed Pods Frameworks */,
+				5A4CDDAB28F8E53D54039287 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,6 +266,7 @@
 				DCB0EEC01FB4E4B6007ED794 /* EarthColor.png in Resources */,
 				DC40E6671F4DEA7D0060D2BA /* NeptuneColor.png in Resources */,
 				DC40E6581F4DEA7D0060D2BA /* CallistoColor.png in Resources */,
+				DC50E4C41FBF5AD100AE9FD0 /* Icon.png in Resources */,
 				DC40E66F1F4DEA7D0060D2BA /* UranusColor.png in Resources */,
 				DC40E6681F4DEA7D0060D2BA /* PhobosColor.png in Resources */,
 				DC40E6631F4DEA7D0060D2BA /* MarsColor.png in Resources */,
@@ -254,13 +299,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		57768A2C8DF9340012F63E4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestAR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A4CDDAB28F8E53D54039287 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestAR/Pods-TestAR-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90F12971B267195C2D4C1461 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestAR/Pods-TestAR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DC40E60B1F4D22390060D2BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC50E4C21FBF357700AE9FD0 /* ScenePlanet.swift in Sources */,
 				DC40E6721F59AEFC0060D2BA /* Planet.swift in Sources */,
 				DC40E6171F4D223A0060D2BA /* ViewController.swift in Sources */,
+				DC50E4C01FBF302000AE9FD0 /* SceneManager.swift in Sources */,
 				DC40E6131F4D223A0060D2BA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +494,7 @@
 		};
 		DC40E6241F4D223A0060D2BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E607909C0D5A4A9E3E8DB719 /* Pods-TestAR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -411,6 +510,7 @@
 		};
 		DC40E6251F4D223A0060D2BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A4460EF3CDE7C97BAE4406 /* Pods-TestAR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

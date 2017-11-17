@@ -10,136 +10,98 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
     private let systemSize: Float = 24
     private let planetSize: Float = 0.1
     private let timeScale: Float = 240
+    
+    private var sceneManager: SceneManager?
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        guard let manager = sceneManager else {
+            return
+        }
+        
+        guard let camera = sceneView.session.currentFrame?.camera else {
+            return
+        }
+        
+        let iconLocations = manager.update(renderer: renderer, systemTime: time, camera: camera)
+        
+        DispatchQueue.main.async {
+            self.view.layer.sublayers = []
+            for location in iconLocations {
+                let icon = CAShapeLayer()
+                let radius: CGFloat = 10.0
+                
+                icon.path = UIBezierPath(roundedRect: CGRect(x: -radius, y: -radius, width: 2.0 * radius, height: 2.0 * radius), cornerRadius: radius).cgPath
+                icon.position = location
+                icon.strokeColor = UIColor.white.cgColor
+                icon.fillColor = UIColor.clear.cgColor
+                
+                self.view.layer.addSublayer(icon)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
+        sceneView.session.delegate = self
         
         // Show statistics such as fps and timing information
         //sceneView.showsStatistics = true
         sceneView.antialiasingMode = .multisampling4X
 
-        let planetScene = SCNScene()
-        
-        let sunNode = createPlanet(planet: Planet.SUN, planetScale: planetSize, systemScale: systemSize)
-        planetScene.rootNode.addChildNode(sunNode)
-        Planet.SUN.node = planetScene.rootNode
-        
-        createSatellites(parentPlanet: Planet.SUN, parentNode: planetScene.rootNode, planetScale: planetSize, systemScale: systemSize)
-        animate(planet: Planet.SUN, timeScale: timeScale)
+        let manager = SceneManager()
+        sceneManager = manager
         
         // Set the scene to the view
-        sceneView.scene = planetScene
-        sceneView.scene.rootNode.position = SCNVector3Make(0, -3, 0)
+        sceneView.scene = SCNScene()
         sceneView.scene.background.contents = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        sceneView.scene.rootNode.addChildNode(manager.rootNode)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTap(sender:)))
+        tapGesture.numberOfTapsRequired = 1
+        sceneView.addGestureRecognizer(tapGesture)
     }
     
-    fileprivate func animate(planet: Planet, timeScale: Float) {
-        if let orbitNode = planet.node {
-            let animation = createOrbitAnimation(planet: planet, timeScale: timeScale)
-            orbitNode.addAnimation(animation, forKey: "ORBIT")
+    @objc fileprivate func didTap(sender: UIGestureRecognizer) {
+        let screenPoint = sender.location(ofTouch: 0, in: sceneView)
+        let hitTest = sceneView.hitTest(screenPoint, options: [SCNHitTestOption.backFaceCulling: true])
+        
+        if hitTest.count == 0 {
+            return
         }
-        if let comNode = planet.node?.childNode(withName: "\(planet.name)_Surface", recursively: true) {
-            let animation = createRotationAnimation(planet: planet, timeScale: timeScale/365)
-            comNode.addAnimation(animation, forKey: "ROTATION")
+        
+        let closest = hitTest[0]
+        var node = closest.node
+        
+        // The first name we find in the hiearchy should be a planet body name
+        while(node.name == nil) {
+            guard let parent = node.parent else {
+                return
+            }
+            
+            node = parent
         }
         
-        for child in planet.children {
-            animate(planet: child, timeScale: timeScale)
+        guard let manager = sceneManager, let name = node.name else {
+            return
         }
-    }
-    
-    fileprivate func createOrbitAnimation(planet: Planet, timeScale: Float) -> CABasicAnimation {
-        let orbit = CABasicAnimation(keyPath: "rotation")
-        orbit.fromValue = NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0))
-        orbit.toValue = NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float.pi * 2))
-        orbit.duration = planet.scaledOrbitPeriod(timeScale: timeScale)
-        orbit.repeatCount = .infinity
         
-        return orbit
-    }
-    
-    fileprivate func createRotationAnimation(planet: Planet, timeScale: Float) -> CABasicAnimation {
-        let orbit = CABasicAnimation(keyPath: "rotation")
-        orbit.fromValue = NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0))
-        orbit.toValue = NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float.pi * 2))
-        orbit.duration = planet.scaledRotationPeriod(timeScale: timeScale)
-        orbit.repeatCount = .infinity
-        
-        return orbit
-    }
-    
-    fileprivate func createSatellites(parentPlanet: Planet, parentNode: SCNNode, planetScale: Float, systemScale: Float) {
-        let scaledSurface = parentPlanet.scaledRadius(planetSize: planetScale)
-        
-        for child in parentPlanet.children {
-            // Node representing center of mass for planet
-            let massNode = createPlanet(planet: child, planetScale: planetScale, systemScale: systemScale)
-            
-            // Position away from parent
-            let offset = child.scaledOrbit(solarSystemSize: systemSize) + scaledSurface
-            massNode.position = SCNVector3Make(0, 0, -offset)
-            
-            // Create node for rotating to emmulate "orbiting"
-            let orbitNode = SCNNode()
-            orbitNode.name = "\(child.name)_Orbit"
-            orbitNode.addChildNode(massNode)
-            child.node = orbitNode
-            
-            parentNode.addChildNode(orbitNode)
-            
-            createSatellites(parentPlanet: child, parentNode: massNode, planetScale: planetScale, systemScale: systemScale)
+        guard let cameraTransform = sceneView.session.currentFrame?.camera.transform else {
+            return
         }
-    }
-    
-    fileprivate func createPlanet(planet: Planet, planetScale: Float, systemScale: Float) -> SCNNode {
-        let scaledRadius = planet.scaledRadius(planetSize: planetScale)
-        
-        let material = SCNMaterial()
-        material.name = planet.name
-        material.diffuse.contents = planet.image
-        
-        let centerOfMass = SCNNode()
-        centerOfMass.name = "\(planet.name)_CoM"
-        
-        let textGeometry = SCNText(string: planet.name, extrusionDepth: 0.1)
-        textGeometry.flatness = 0.1
-        
-        let text = SCNNode(geometry: textGeometry)
-        text.position = SCNVector3Make(0, scaledRadius + 0.01, 0)
-        text.scale = SCNVector3Make(0.01, 0.01, 0.01)
-        
-        // Make the text anchor point center bottom
-        let (textMin, textMax) = textGeometry.boundingBox
-        text.pivot = SCNMatrix4MakeTranslation(textMin.x + (textMax.x - textMin.x) * 0.5, 0, 0)
-        
-        // We can not put the billboard constraint directly onto a text node
-        // Because Apple is broken
-        // So this parent node only exists to hold the constraint
-        let textParentNode = SCNNode()
-        textParentNode.addChildNode(text)
-        
-        let directionConstraint = SCNBillboardConstraint()
-        textParentNode.constraints = [directionConstraint]
-        
-        centerOfMass.addChildNode(textParentNode)
-        
-        
-        let sphere = SCNNode(geometry: SCNSphere(radius: CGFloat(scaledRadius)))
-        sphere.geometry?.materials = [material]
-        sphere.name = "\(planet.name)_Surface"
-        
-        centerOfMass.addChildNode(sphere)
-        return centerOfMass
+                
+        let cameraPosition = SCNVector3(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
+        let offset = SCNVector3Make(cameraPosition.x - node.position.x, cameraPosition.y - node.position.y, cameraPosition.z - node.position.z)
+        manager.centerSystem(focusName: name, newCenter: offset)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -33,10 +33,10 @@ class Planet {
     static let SUN = Planet(name: "Sol", image: #imageLiteral(resourceName: "sun.jpg"), orbitRadius: 0, orbitPeriod: 0, planetRadius: 695.7e6, planetPeriod: 2.074e+6,
                             children: [MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE, PLUTO])
     
-    private static let SOLAR_SYSTEM_SIZE: Double = NEPTUNE.orbitRadius
-    private static let PLANET_MAX_RADIUS: Double = 69.911e6
-    private static let ORBIT_TIME: Double = 365 * 24 * 60 * 60 // 1 Earth-Year
-    private static let ROTATION_TIME: Double = 24 * 60 * 60 // 1 Earth-Day
+    public static let SOLAR_SYSTEM_SIZE: Double = NEPTUNE.orbitRadius
+    public static let PLANET_MAX_RADIUS: Double = 69.911e6
+    public static let ORBIT_TIME: Double = 365 * 24 * 60 * 60 // 1 Earth-Year
+    public static let ROTATION_TIME: Double = 24 * 60 * 60 // 1 Earth-Day
     
     private(set) var name: String
     private(set) var orbitRadius: Double // Average distance from sun in meters
@@ -45,8 +45,6 @@ class Planet {
     private(set) var planetPeriod: Double // Rotation on planet in seconds (a day)
     private(set) var image: UIImage?
     private(set) var children: [Planet] // Planets orbiting this body
-    
-    public var node: SCNNode?
     
     init(name: String, image: UIImage?, orbitRadius: Double, orbitPeriod: Double, planetRadius: Double, planetPeriod: Double) {
         self.name = name
@@ -68,8 +66,8 @@ class Planet {
         self.children = children
     }
     
-    public func scaledOrbit(solarSystemSize: Float) -> Float {
-        return Float((orbitRadius / Planet.SOLAR_SYSTEM_SIZE) * Double(solarSystemSize))
+    public func scaledOrbit(solarSystemSize: Float) -> Double {
+        return (orbitRadius / Planet.SOLAR_SYSTEM_SIZE) * Double(solarSystemSize)
     }
     
     public func scaledRadius(planetSize: Float) -> Float {
