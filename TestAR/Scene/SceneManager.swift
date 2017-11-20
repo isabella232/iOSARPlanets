@@ -11,7 +11,7 @@ import SceneKit
 import ARKit
 
 class SceneManager {
-    private var _systemSize: Float = 4
+    private var _systemSize: Float = 3
     private var _planetSize: Float = 0.05
     private var _timeScale: Float = 100
     

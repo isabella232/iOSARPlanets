@@ -24,8 +24,22 @@ class Planet {
     static let MARS = Planet(name: "Mars", image: #imageLiteral(resourceName: "MarsColor.png"), orbitRadius: 228e9, orbitPeriod: 59.4e6, planetRadius: 3390000, planetPeriod: 88800,
                              children: [DEIMOS, PHOBOS])
     
-    static let JUPITER = Planet(name: "Jupiter", image: #imageLiteral(resourceName: "JupiterColor.png"), orbitRadius: 778e9, orbitPeriod: 370e6, planetRadius: 69.911e6, planetPeriod: 36000)
-    static let SATURN = Planet(name: "Saturn", image: #imageLiteral(resourceName: "SaturnColor.png"), orbitRadius: 1.433e12, orbitPeriod: 930e6, planetRadius: 58.232e6, planetPeriod: 36840)
+    static let GANYMEDE = Planet(name: "Ganymede", image: #imageLiteral(resourceName: "GanymedeColor.png"), orbitRadius: 2631277, orbitPeriod: 619200, planetRadius: 2634100, planetPeriod: 14568)
+    static let IO = Planet(name: "Io", image: #imageLiteral(resourceName: "IoColor.png"), orbitRadius: 421648128, orbitPeriod: 152928, planetRadius: 1821294.6, planetPeriod: 152928)
+    static let EUROPA = Planet(name: "Europa", image: #imageLiteral(resourceName: "EuropaColor.png"), orbitRadius: 670900000, orbitPeriod: 306806, planetRadius: 1560800, planetPeriod: 306806)
+    static let CALLISTO = Planet(name: "Callisto", image: #imageLiteral(resourceName: "CallistoColor.png"), orbitRadius: 1882700000, orbitPeriod: 1441929, planetRadius: 2410000, planetPeriod: 1441929)
+    static let JUPITER = Planet(name: "Jupiter", image: #imageLiteral(resourceName: "JupiterColor.png"), orbitRadius: 778e9, orbitPeriod: 370e6, planetRadius: 69.911e6, planetPeriod: 36000,
+                                children: [GANYMEDE, IO, EUROPA, CALLISTO])
+    
+    static let MIMAS = Planet(name: "Mimas", image: #imageLiteral(resourceName: "MimasColor.png"), orbitRadius: 185539000, orbitPeriod: 81388, planetRadius: 198200, planetPeriod: 81388)
+    static let ENCELADUS = Planet(name: "Enceladus", image: #imageLiteral(resourceName: "EnceladusColor.png"), orbitRadius: 237948000, orbitPeriod: 118368, planetRadius: 252100, planetPeriod: 118368)
+    static let TETHYS = Planet(name: "Tethys", image: #imageLiteral(resourceName: "TethysColor.png"), orbitRadius: 294619000, orbitPeriod: 163036, planetRadius: 531100, planetPeriod: 163036)
+    static let DIONE = Planet(name: "Dione", image: #imageLiteral(resourceName: "DioneColor.png"), orbitRadius: 377396000, orbitPeriod: 236390, planetRadius: 561400, planetPeriod: 236390)
+    static let RHEA = Planet(name: "Rhea", image: #imageLiteral(resourceName: "RheaColor.png"), orbitRadius: 527108000, orbitPeriod: 390355, planetRadius: 763800, planetPeriod: 390355)
+    static let TITAN = Planet(name: "Titan", image: #imageLiteral(resourceName: "TitanColor.png"), orbitRadius: 1221870000, orbitPeriod: 1377648, planetRadius: 2575500, planetPeriod: 1377648)
+    static let SATURN = Planet(name: "Saturn", image: #imageLiteral(resourceName: "SaturnColor.png"), orbitRadius: 1.433e12, orbitPeriod: 930e6, planetRadius: 58.232e6, planetPeriod: 36840,
+                               children: [MIMAS, ENCELADUS, TETHYS, DIONE, RHEA, TITAN])
+    
     static let URANUS = Planet(name: "Uranus", image: #imageLiteral(resourceName: "UranusColor.png"), orbitRadius: 2.87e12, orbitPeriod: 2.7e9, planetRadius: 25.362e6, planetPeriod: 62040)
     static let NEPTUNE = Planet(name: "Neptune", image: #imageLiteral(resourceName: "NeptuneColor.png"), orbitRadius: 4.5029e12, orbitPeriod: 5.2e9, planetRadius: 24.622e6, planetPeriod: 57996)
     static let PLUTO = Planet(name: "Pluto", image: #imageLiteral(resourceName: "PlutoColor.png"), orbitRadius: 8.13064e12, orbitPeriod: 7820908000, planetRadius: 1.187e6, planetPeriod: 552096)

@@ -18,7 +18,6 @@
 		DC40E65A1F4DEA7D0060D2BA /* DeimosColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62F1F4DEA690060D2BA /* DeimosColor.png */; };
 		DC40E65B1F4DEA7D0060D2BA /* DioneColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6281F4DEA680060D2BA /* DioneColor.png */; };
 		DC40E65C1F4DEA7D0060D2BA /* EnceladusColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62D1F4DEA690060D2BA /* EnceladusColor.png */; };
-		DC40E65D1F4DEA7D0060D2BA /* Planet.dae in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62A1F4DEA680060D2BA /* Planet.dae */; };
 		DC40E65E1F4DEA7D0060D2BA /* EuropaColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E63B1F4DEA6C0060D2BA /* EuropaColor.png */; };
 		DC40E65F1F4DEA7D0060D2BA /* GanymedeColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E62B1F4DEA680060D2BA /* GanymedeColor.png */; };
 		DC40E6601F4DEA7D0060D2BA /* IapetusColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DC40E6381F4DEA6B0060D2BA /* IapetusColor.png */; };
@@ -66,7 +65,6 @@
 		DC40E6271F4DEA670060D2BA /* MoonColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoonColor.png; sourceTree = "<group>"; };
 		DC40E6281F4DEA680060D2BA /* DioneColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DioneColor.png; sourceTree = "<group>"; };
 		DC40E6291F4DEA680060D2BA /* TethysColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TethysColor.png; sourceTree = "<group>"; };
-		DC40E62A1F4DEA680060D2BA /* Planet.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = Planet.dae; sourceTree = "<group>"; };
 		DC40E62B1F4DEA680060D2BA /* GanymedeColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GanymedeColor.png; sourceTree = "<group>"; };
 		DC40E62C1F4DEA690060D2BA /* IoColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IoColor.png; sourceTree = "<group>"; };
 		DC40E62D1F4DEA690060D2BA /* EnceladusColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnceladusColor.png; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				DC40E62F1F4DEA690060D2BA /* DeimosColor.png */,
 				DC40E6281F4DEA680060D2BA /* DioneColor.png */,
 				DC40E62D1F4DEA690060D2BA /* EnceladusColor.png */,
-				DC40E62A1F4DEA680060D2BA /* Planet.dae */,
 				DC40E63B1F4DEA6C0060D2BA /* EuropaColor.png */,
 				DC40E62B1F4DEA680060D2BA /* GanymedeColor.png */,
 				DC40E6381F4DEA6B0060D2BA /* IapetusColor.png */,
@@ -314,7 +311,6 @@
 				DC40E65F1F4DEA7D0060D2BA /* GanymedeColor.png in Resources */,
 				DC50E4D81FC32B9800AE9FD0 /* GalaxyTex_PositiveZ.jpeg in Resources */,
 				DC50E4DA1FC32B9800AE9FD0 /* GalaxyTex_NegativeZ.jpeg in Resources */,
-				DC40E65D1F4DEA7D0060D2BA /* Planet.dae in Resources */,
 				DC40E6701F4DEA7D0060D2BA /* VenusColor.png in Resources */,
 				DC40E61C1F4D223A0060D2BA /* Assets.xcassets in Resources */,
 				DC40E6591F4DEA7D0060D2BA /* CharonColor.png in Resources */,
