@@ -23,11 +23,11 @@ class ScenePlanet {
     init(baseData: Planet, planetScale: Float) {
         planet = baseData
         rootNode = SCNNode()
+        rootNode.name = planet.name
         
         planetNode = createPlanetBody(planetData: planet)
         textNode = createText(name: planet.name)
         
-        rootNode.name = "\(planet.name)_CoM"
         rootNode.addChildNode(planetNode)
         rootNode.addChildNode(textNode)
         //rootNode.addChildNode(createIcon())
@@ -87,7 +87,6 @@ class ScenePlanet {
         
         let sphere = SCNNode(geometry: SCNSphere(radius: 1))
         sphere.geometry?.materials = [material]
-        sphere.name = "\(planet.name)_Surface"
         
         return sphere
     }

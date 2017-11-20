@@ -42,6 +42,12 @@
 		DC50E4C01FBF302000AE9FD0 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC50E4BF1FBF302000AE9FD0 /* SceneManager.swift */; };
 		DC50E4C21FBF357700AE9FD0 /* ScenePlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC50E4C11FBF357700AE9FD0 /* ScenePlanet.swift */; };
 		DC50E4C41FBF5AD100AE9FD0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4C31FBF5AD100AE9FD0 /* Icon.png */; };
+		DC50E4D81FC32B9800AE9FD0 /* GalaxyTex_PositiveZ.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D21FC32B9800AE9FD0 /* GalaxyTex_PositiveZ.jpeg */; };
+		DC50E4D91FC32B9800AE9FD0 /* GalaxyTex_NegativeX.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D31FC32B9800AE9FD0 /* GalaxyTex_NegativeX.jpeg */; };
+		DC50E4DA1FC32B9800AE9FD0 /* GalaxyTex_NegativeZ.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D41FC32B9800AE9FD0 /* GalaxyTex_NegativeZ.jpeg */; };
+		DC50E4DB1FC32B9800AE9FD0 /* GalaxyTex_PositiveX.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D51FC32B9800AE9FD0 /* GalaxyTex_PositiveX.jpeg */; };
+		DC50E4DC1FC32B9800AE9FD0 /* GalaxyTex_NegativeY.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D61FC32B9800AE9FD0 /* GalaxyTex_NegativeY.jpeg */; };
+		DC50E4DD1FC32B9800AE9FD0 /* GalaxyTex_PositiveY.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D71FC32B9800AE9FD0 /* GalaxyTex_PositiveY.jpeg */; };
 		DCB0EEC01FB4E4B6007ED794 /* EarthColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEBE1FB4E4B6007ED794 /* EarthColor.png */; };
 		DCB0EEC11FB4E4B6007ED794 /* Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEBF1FB4E4B6007ED794 /* Earth.jpg */; };
 		DCB0EEC31FB4F332007ED794 /* sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEC21FB4F332007ED794 /* sun.jpg */; };
@@ -85,6 +91,12 @@
 		DC50E4BF1FBF302000AE9FD0 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		DC50E4C11FBF357700AE9FD0 /* ScenePlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePlanet.swift; sourceTree = "<group>"; };
 		DC50E4C31FBF5AD100AE9FD0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		DC50E4D21FC32B9800AE9FD0 /* GalaxyTex_PositiveZ.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_PositiveZ.jpeg; sourceTree = "<group>"; };
+		DC50E4D31FC32B9800AE9FD0 /* GalaxyTex_NegativeX.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_NegativeX.jpeg; sourceTree = "<group>"; };
+		DC50E4D41FC32B9800AE9FD0 /* GalaxyTex_NegativeZ.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_NegativeZ.jpeg; sourceTree = "<group>"; };
+		DC50E4D51FC32B9800AE9FD0 /* GalaxyTex_PositiveX.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_PositiveX.jpeg; sourceTree = "<group>"; };
+		DC50E4D61FC32B9800AE9FD0 /* GalaxyTex_NegativeY.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_NegativeY.jpeg; sourceTree = "<group>"; };
+		DC50E4D71FC32B9800AE9FD0 /* GalaxyTex_PositiveY.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_PositiveY.jpeg; sourceTree = "<group>"; };
 		DCB0EEBE1FB4E4B6007ED794 /* EarthColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EarthColor.png; sourceTree = "<group>"; };
 		DCB0EEBF1FB4E4B6007ED794 /* Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Earth.jpg; sourceTree = "<group>"; };
 		DCB0EEC21FB4F332007ED794 /* sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sun.jpg; sourceTree = "<group>"; };
@@ -142,6 +154,7 @@
 		DC40E6111F4D223A0060D2BA /* TestAR */ = {
 			isa = PBXGroup;
 			children = (
+				DC50E4C51FC324D700AE9FD0 /* Skybox */,
 				DC50E4BE1FBF2FFE00AE9FD0 /* Scene */,
 				DC50E4BD1FBE309E00AE9FD0 /* PlanetObject */,
 				DC40E6121F4D223A0060D2BA /* AppDelegate.swift */,
@@ -198,6 +211,19 @@
 				DC50E4C11FBF357700AE9FD0 /* ScenePlanet.swift */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		DC50E4C51FC324D700AE9FD0 /* Skybox */ = {
+			isa = PBXGroup;
+			children = (
+				DC50E4D31FC32B9800AE9FD0 /* GalaxyTex_NegativeX.jpeg */,
+				DC50E4D61FC32B9800AE9FD0 /* GalaxyTex_NegativeY.jpeg */,
+				DC50E4D41FC32B9800AE9FD0 /* GalaxyTex_NegativeZ.jpeg */,
+				DC50E4D51FC32B9800AE9FD0 /* GalaxyTex_PositiveX.jpeg */,
+				DC50E4D71FC32B9800AE9FD0 /* GalaxyTex_PositiveY.jpeg */,
+				DC50E4D21FC32B9800AE9FD0 /* GalaxyTex_PositiveZ.jpeg */,
+			);
+			path = Skybox;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +290,7 @@
 			files = (
 				DC40E65E1F4DEA7D0060D2BA /* EuropaColor.png in Resources */,
 				DCB0EEC01FB4E4B6007ED794 /* EarthColor.png in Resources */,
+				DC50E4DD1FC32B9800AE9FD0 /* GalaxyTex_PositiveY.jpeg in Resources */,
 				DC40E6671F4DEA7D0060D2BA /* NeptuneColor.png in Resources */,
 				DC40E6581F4DEA7D0060D2BA /* CallistoColor.png in Resources */,
 				DC50E4C41FBF5AD100AE9FD0 /* Icon.png in Resources */,
@@ -273,6 +300,7 @@
 				DC40E66C1F4DEA7D0060D2BA /* TethysColor.png in Resources */,
 				DC40E6651F4DEA7D0060D2BA /* MimasColor.png in Resources */,
 				DC40E66B1F4DEA7D0060D2BA /* SaturnColor.png in Resources */,
+				DC50E4D91FC32B9800AE9FD0 /* GalaxyTex_NegativeX.jpeg in Resources */,
 				DC40E6661F4DEA7D0060D2BA /* MoonColor.png in Resources */,
 				DCB0EEC11FB4E4B6007ED794 /* Earth.jpg in Resources */,
 				DC40E6621F4DEA7D0060D2BA /* JupiterColor.png in Resources */,
@@ -282,7 +310,11 @@
 				DC40E66D1F4DEA7D0060D2BA /* TitanColor.png in Resources */,
 				DC40E61F1F4D223A0060D2BA /* LaunchScreen.storyboard in Resources */,
 				DC40E66E1F4DEA7D0060D2BA /* TritonColor.png in Resources */,
+				DC50E4DB1FC32B9800AE9FD0 /* GalaxyTex_PositiveX.jpeg in Resources */,
+				DC50E4DC1FC32B9800AE9FD0 /* GalaxyTex_NegativeY.jpeg in Resources */,
 				DC40E65F1F4DEA7D0060D2BA /* GanymedeColor.png in Resources */,
+				DC50E4D81FC32B9800AE9FD0 /* GalaxyTex_PositiveZ.jpeg in Resources */,
+				DC50E4DA1FC32B9800AE9FD0 /* GalaxyTex_NegativeZ.jpeg in Resources */,
 				DC40E65D1F4DEA7D0060D2BA /* Planet.dae in Resources */,
 				DC40E6701F4DEA7D0060D2BA /* VenusColor.png in Resources */,
 				DC40E61C1F4D223A0060D2BA /* Assets.xcassets in Resources */,

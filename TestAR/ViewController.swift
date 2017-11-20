@@ -66,7 +66,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         
         // Set the scene to the view
         sceneView.scene = SCNScene()
-        sceneView.scene.background.contents = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        sceneView.scene.background.contents = [#imageLiteral(resourceName: "GalaxyTex_PositiveX.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeX.jpeg"),#imageLiteral(resourceName: "GalaxyTex_PositiveY.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeY.jpeg"),#imageLiteral(resourceName: "GalaxyTex_PositiveZ.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeZ.jpeg")]
         sceneView.scene.rootNode.addChildNode(manager.rootNode)
         sceneView.overlaySKScene = SKScene(size: sceneView.frame.size)
         
@@ -102,10 +102,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         guard let cameraTransform = sceneView.session.currentFrame?.camera.transform else {
             return
         }
-                
+        
         let cameraPosition = SCNVector3(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
         let offset = SCNVector3Make(cameraPosition.x - node.position.x, cameraPosition.y - node.position.y, cameraPosition.z - node.position.z)
+        
         manager.centerSystem(focusName: name, newCenter: offset)
+        manager.systemSize *= 10
+        manager.planetSize *= 10
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -13,7 +13,7 @@ import ARKit
 class SceneManager {
     private var _systemSize: Float = 24
     private var _planetSize: Float = 0.01
-    private var _timeScale: Float = 240
+    private var _timeScale: Float = 120
     
     /// How far from origin should the focus planet be
     private var offset = SCNVector3Make(0, 0, 0)
@@ -79,7 +79,7 @@ class SceneManager {
         }
         
         focusPlanet = focusScenePlanet
-        offset = newCenter
+        offset = focusScenePlanet.rootNode.worldPosition
     }
     
     /// Update the scene
@@ -97,7 +97,7 @@ class SceneManager {
             return []
         }
         
-        let focusOffset = focusScenePlanet.rootNode.position
+        let focusOffset = SCNVector3Make(-focusScenePlanet.rootNode.worldPosition.x, -focusScenePlanet.rootNode.worldPosition.y, -focusScenePlanet.rootNode.worldPosition.z)
         let totalOffset = SCNVector3Make(focusOffset.x + offset.x, focusOffset.y + offset.y, focusOffset.z + offset.z)
         
         for scenePlanet in planetMap.values {
