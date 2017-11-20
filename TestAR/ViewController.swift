@@ -36,9 +36,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         let iconLocations = manager.update(renderer: renderer, systemTime: time, camera: camera)
         skScene.removeAllChildren()
 
-        for location in iconLocations {
+        for screenPlanet in iconLocations {
             let node = SKShapeNode(circleOfRadius: 10)
-            node.position = CGPoint(x: location.x, y: skScene.size.height - location.y)
+            node.position = CGPoint(x: screenPlanet.position.x, y: skScene.size.height - screenPlanet.position.y)
             
             //let radius: CGFloat = 10.0
             //node.path = UIBezierPath(roundedRect: CGRect(x: -radius, y: -radius, width: 2.0 * radius, height: 2.0 * radius), cornerRadius: radius).cgPath
@@ -47,6 +47,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             node.lineWidth = 1
 
             skScene.addChild(node)
+            
+            let text = SKLabelNode(text: screenPlanet.planet.name)
+            text.fontName = "HelveticaNeue-Bold"
+            text.position = CGPoint(x: node.position.x, y: node.position.y + text.frame.height)
+            skScene.addChild(text)
         }
     }
 

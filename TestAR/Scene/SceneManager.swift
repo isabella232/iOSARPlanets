@@ -83,7 +83,7 @@ class SceneManager {
     }
     
     /// Update the scene
-    public func update(renderer: SCNSceneRenderer, systemTime: TimeInterval, camera: ARCamera) -> [CGPoint] {
+    public func update(renderer: SCNSceneRenderer, systemTime: TimeInterval, camera: ARCamera) -> [ScreenPlanet] {
         guard let rootScenePlanet = planetMap[Planet.SUN.name] else {
             return []
         }
@@ -109,20 +109,29 @@ class SceneManager {
         }
         
         // Move icons
-        var iconPoints:[CGPoint] = []
+        var iconPoints:[ScreenPlanet] = []
         for scenePlanet in planetMap.values {
-            if(renderer.isNode(scenePlanet.rootNode, insideFrustumOf: pov)) {
+            if(isFocused(planet: scenePlanet.planet) && renderer.isNode(scenePlanet.rootNode, insideFrustumOf: pov)) {
                 let v = renderer.projectPoint(scenePlanet.rootNode.worldPosition)
                 let p = CGPoint(x: CGFloat(v.x), y: CGFloat(v.y))
                 
                 // Don't add points behind the camera
                 if(v.z > 0) {
-                    iconPoints.append(p)
+                    iconPoints.append(ScreenPlanet(position: p, planet: scenePlanet.planet))
                 }
             }
         }
         
         return iconPoints
+    }
+    
+    /// Is the planet the focused planet, or the immediate child of a focused planet
+    fileprivate func isFocused(planet: Planet) -> Bool {
+        let focus = focusPlanet?.planet ?? Planet.SUN
+        
+        return focus === planet || focus.children.contains(where: {
+            $0 === planet
+        })
     }
     
     fileprivate func positionPlanet(scenePlanet: ScenePlanet, atRealTime: TimeInterval, parentPos: SCNVector3) {

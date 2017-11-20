@@ -48,6 +48,7 @@
 		DC50E4DB1FC32B9800AE9FD0 /* GalaxyTex_PositiveX.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D51FC32B9800AE9FD0 /* GalaxyTex_PositiveX.jpeg */; };
 		DC50E4DC1FC32B9800AE9FD0 /* GalaxyTex_NegativeY.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D61FC32B9800AE9FD0 /* GalaxyTex_NegativeY.jpeg */; };
 		DC50E4DD1FC32B9800AE9FD0 /* GalaxyTex_PositiveY.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC50E4D71FC32B9800AE9FD0 /* GalaxyTex_PositiveY.jpeg */; };
+		DC50E4DF1FC32E7900AE9FD0 /* ScreenPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC50E4DE1FC32E7900AE9FD0 /* ScreenPlanet.swift */; };
 		DCB0EEC01FB4E4B6007ED794 /* EarthColor.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEBE1FB4E4B6007ED794 /* EarthColor.png */; };
 		DCB0EEC11FB4E4B6007ED794 /* Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEBF1FB4E4B6007ED794 /* Earth.jpg */; };
 		DCB0EEC31FB4F332007ED794 /* sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCB0EEC21FB4F332007ED794 /* sun.jpg */; };
@@ -97,6 +98,7 @@
 		DC50E4D51FC32B9800AE9FD0 /* GalaxyTex_PositiveX.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_PositiveX.jpeg; sourceTree = "<group>"; };
 		DC50E4D61FC32B9800AE9FD0 /* GalaxyTex_NegativeY.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_NegativeY.jpeg; sourceTree = "<group>"; };
 		DC50E4D71FC32B9800AE9FD0 /* GalaxyTex_PositiveY.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTex_PositiveY.jpeg; sourceTree = "<group>"; };
+		DC50E4DE1FC32E7900AE9FD0 /* ScreenPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenPlanet.swift; sourceTree = "<group>"; };
 		DCB0EEBE1FB4E4B6007ED794 /* EarthColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EarthColor.png; sourceTree = "<group>"; };
 		DCB0EEBF1FB4E4B6007ED794 /* Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Earth.jpg; sourceTree = "<group>"; };
 		DCB0EEC21FB4F332007ED794 /* sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sun.jpg; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				DC40E6711F59AEFC0060D2BA /* Planet.swift */,
 				DC50E4BF1FBF302000AE9FD0 /* SceneManager.swift */,
 				DC50E4C11FBF357700AE9FD0 /* ScenePlanet.swift */,
+				DC50E4DE1FC32E7900AE9FD0 /* ScreenPlanet.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				DC50E4C21FBF357700AE9FD0 /* ScenePlanet.swift in Sources */,
 				DC40E6721F59AEFC0060D2BA /* Planet.swift in Sources */,
 				DC40E6171F4D223A0060D2BA /* ViewController.swift in Sources */,
+				DC50E4DF1FC32E7900AE9FD0 /* ScreenPlanet.swift in Sources */,
 				DC50E4C01FBF302000AE9FD0 /* SceneManager.swift in Sources */,
 				DC40E6131F4D223A0060D2BA /* AppDelegate.swift in Sources */,
 			);
