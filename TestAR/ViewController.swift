@@ -13,12 +13,32 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    
-    private let systemSize: Float = 24
-    private let planetSize: Float = 0.1
-    private let timeScale: Float = 240
+    @IBOutlet var focusLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     
     private var sceneManager: SceneManager?
+    
+    private let timeScales: [Float] = [1, 2, 3, 5, 10, 50, 100, 1000, 10000, 100000, 1000000, 10000000]
+    private var currentTimeScale = 5
+    
+    @IBAction func increaseTime() {
+        guard let manager = sceneManager else {
+            return
+        }
+        currentTimeScale = min(currentTimeScale + 1, timeScales.count - 1)
+        manager.timeScale = timeScales[currentTimeScale]
+        
+        updateTimeLabel()
+    }
+    @IBAction func decreaseTime() {
+        guard let manager = sceneManager else {
+            return
+        }
+        currentTimeScale = max(currentTimeScale - 1, 0)
+        manager.timeScale = timeScales[currentTimeScale]
+        
+        updateTimeLabel()
+    }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         guard let manager = sceneManager else {
@@ -49,6 +69,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             skScene.addChild(node)
             
             let text = SKLabelNode(text: screenPlanet.planet.name)
+            text.fontSize = 12
             text.fontName = "HelveticaNeue-Bold"
             text.position = CGPoint(x: node.position.x, y: node.position.y + text.frame.height)
             skScene.addChild(text)
@@ -75,9 +96,26 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         sceneView.scene.rootNode.addChildNode(manager.rootNode)
         sceneView.overlaySKScene = SKScene(size: sceneView.frame.size)
         
+        if let camera = sceneView.pointOfView?.camera {
+            camera.zFar = 10000 // I can't use infinity :(
+            camera.zNear = 0.1
+        }
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTap(sender:)))
         tapGesture.numberOfTapsRequired = 1
         sceneView.addGestureRecognizer(tapGesture)
+        
+        updateTimeLabel()
+    }
+    
+    fileprivate func updateTimeLabel() {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = ","
+        formatter.numberStyle = .decimal
+        
+        let number = formatter.string(from: NSNumber(value: timeScales[currentTimeScale])) ?? "?"
+        
+        timeLabel.text = "Time: \(number)x"
     }
     
     @objc fileprivate func didTap(sender: UIGestureRecognizer) {
@@ -104,16 +142,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             return
         }
         
-        guard let cameraTransform = sceneView.session.currentFrame?.camera.transform else {
-            return
-        }
-        
-        let cameraPosition = SCNVector3(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
-        let offset = SCNVector3Make(cameraPosition.x - node.position.x, cameraPosition.y - node.position.y, cameraPosition.z - node.position.z)
-        
-        manager.centerSystem(focusName: name, newCenter: offset)
-        manager.systemSize *= 10
-        manager.planetSize *= 10
+        manager.centerSystem(focusName: name)
+        focusLabel.text = "Focus: \(manager.getFocusPlanet().name)"
     }
     
     override func viewWillAppear(_ animated: Bool) {

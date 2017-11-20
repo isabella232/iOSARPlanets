@@ -16,16 +16,18 @@ class ScenePlanet {
     
     var rootNode: SCNNode = SCNNode()
     var planetNode: SCNNode = SCNNode()
-        
+    var tapNode: SCNNode = SCNNode()
+    
     init(baseData: Planet, planetScale: Float) {
         planet = baseData
         rootNode = SCNNode()
         rootNode.name = planet.name
         
         planetNode = createPlanetBody(planetData: planet)
+        tapNode = createTappableArea()
         
         rootNode.addChildNode(planetNode)
-        rootNode.addChildNode(createTappableArea())
+        rootNode.addChildNode(tapNode)
         
         setScale(planetScale)
     }
@@ -35,21 +37,15 @@ class ScenePlanet {
         material.name = "tap"
         material.diffuse.contents = UIColor.clear
         
-        let tapGeom = SCNPlane(width: 0.5, height: 0.5)
+        let tapGeom = SCNPlane(width: 0.1, height: 0.1)
         tapGeom.materials = [material]
         
-        let tapNode = SCNNode(geometry: tapGeom)
-        
-        // We can not put the billboard constraint directly onto a text node
-        // Because Apple is broken
-        // So this parent node only exists to hold the constraint
-        let tapParentNode = SCNNode()
-        tapParentNode.addChildNode(tapNode)
+        let node = SCNNode(geometry: tapGeom)
         
         let directionConstraint = SCNBillboardConstraint()
-        tapParentNode.constraints = [directionConstraint]
+        node.constraints = [directionConstraint]
         
-        return tapParentNode
+        return node
     }
     
     fileprivate func createPlanetBody(planetData: Planet) -> SCNNode {
@@ -63,8 +59,18 @@ class ScenePlanet {
         return sphere
     }
     
+    /// Resize the planet model
     func setScale(_ planetScale: Float) {
         let scaledRadius = planet.scaledRadius(planetSize: planetScale)
         planetNode.scale = SCNVector3Make(scaledRadius, scaledRadius, scaledRadius)
+    }
+    
+    /// Enable the tap node
+    func setTappable(_ isTappable: Bool) {
+        tapNode.removeFromParentNode()
+        
+        if(isTappable) {
+            rootNode.addChildNode(tapNode)
+        }
     }
 }

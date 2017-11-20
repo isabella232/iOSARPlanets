@@ -1,27 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A278a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="TestAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VuC-tc-0j5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8V-Bg-mIu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </arscnView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: 1x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YW-q7-el4">
+                                <rect key="frame" x="18" y="628" width="252" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fd7-If-1Kd">
+                                <rect key="frame" x="288" y="619.5" width="30" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="zBI-F9-pk4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="increaseTime" destination="BV1-FR-VrT" eventType="touchUpInside" id="smr-wd-7gO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z45-xx-rGd">
+                                <rect key="frame" x="327" y="619.5" width="30" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="hXH-Ue-bxU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="decreaseTime" destination="BV1-FR-VrT" eventType="touchUpInside" id="The-5Z-rav"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Focus: Sol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtI-71-fK5">
+                                <rect key="frame" x="18" y="38" width="339" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7YW-q7-el4" firstAttribute="leading" secondItem="gPi-eQ-zaK" secondAttribute="leading" constant="18" id="453-vy-WCg"/>
+                            <constraint firstItem="gPi-eQ-zaK" firstAttribute="trailing" secondItem="n8V-Bg-mIu" secondAttribute="trailing" id="7cF-39-hFW"/>
+                            <constraint firstItem="z45-xx-rGd" firstAttribute="baseline" secondItem="7YW-q7-el4" secondAttribute="baseline" id="8oo-mv-16h"/>
+                            <constraint firstItem="gPi-eQ-zaK" firstAttribute="bottom" secondItem="7YW-q7-el4" secondAttribute="bottom" constant="18" id="9s7-ht-1Hf"/>
+                            <constraint firstItem="TtI-71-fK5" firstAttribute="top" secondItem="gPi-eQ-zaK" secondAttribute="top" constant="18" id="D7y-Gx-oKL"/>
+                            <constraint firstItem="n8V-Bg-mIu" firstAttribute="top" secondItem="gPi-eQ-zaK" secondAttribute="top" id="QPg-lj-zxY"/>
+                            <constraint firstItem="fd7-If-1Kd" firstAttribute="leading" secondItem="7YW-q7-el4" secondAttribute="trailing" constant="18" id="SmD-qX-N0p"/>
+                            <constraint firstItem="gPi-eQ-zaK" firstAttribute="trailing" secondItem="z45-xx-rGd" secondAttribute="trailing" constant="18" id="cEs-PI-gqc"/>
+                            <constraint firstItem="gPi-eQ-zaK" firstAttribute="trailing" secondItem="TtI-71-fK5" secondAttribute="trailing" constant="18" id="ka1-tP-aUT"/>
+                            <constraint firstItem="z45-xx-rGd" firstAttribute="leading" secondItem="fd7-If-1Kd" secondAttribute="trailing" constant="9" id="lEz-ny-eGe"/>
+                            <constraint firstItem="TtI-71-fK5" firstAttribute="leading" secondItem="gPi-eQ-zaK" secondAttribute="leading" constant="18" id="lgx-Yz-GPI"/>
+                            <constraint firstItem="fd7-If-1Kd" firstAttribute="baseline" secondItem="7YW-q7-el4" secondAttribute="baseline" id="rbp-Vp-wTj"/>
+                            <constraint firstItem="gPi-eQ-zaK" firstAttribute="bottom" secondItem="n8V-Bg-mIu" secondAttribute="bottom" id="sko-Zr-3L7"/>
+                            <constraint firstItem="n8V-Bg-mIu" firstAttribute="leading" secondItem="gPi-eQ-zaK" secondAttribute="leading" id="xtn-J6-fwO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gPi-eQ-zaK"/>
+                    </view>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="focusLabel" destination="TtI-71-fK5" id="mA1-GS-hFh"/>
+                        <outlet property="sceneView" destination="n8V-Bg-mIu" id="33X-jP-AAR"/>
+                        <outlet property="timeLabel" destination="7YW-q7-el4" id="S9o-ug-jgQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.5" y="117.5"/>
         </scene>
     </scenes>
 </document>

@@ -11,15 +11,19 @@ import SceneKit
 import ARKit
 
 class SceneManager {
-    private var _systemSize: Float = 24
-    private var _planetSize: Float = 0.01
-    private var _timeScale: Float = 120
+    private var _systemSize: Float = 4
+    private var _planetSize: Float = 0.05
+    private var _timeScale: Float = 100
     
+    private static let worldOffset = SCNVector3Make(-2, 0, -3)
     /// How far from origin should the focus planet be
-    private var offset = SCNVector3Make(0, 0, 0)
+    private var offset = worldOffset
     /// Which planet should be at the origin
     private var focusPlanet: ScenePlanet?
     private var planetMap: [String:ScenePlanet]
+    
+    private var elapsedTime: Double = 0
+    private var lastFrame: Double = 0
     
     public let rootNode: SCNNode
     
@@ -29,6 +33,10 @@ class SceneManager {
         
         /// Build all planet nodes
         createScenePlanet(planet: Planet.SUN, sceneRoot: rootNode)
+    }
+    
+    public func getFocusPlanet() -> Planet {
+        return focusPlanet?.planet ?? Planet.SUN
     }
     
     fileprivate func createScenePlanet(planet: Planet, sceneRoot: SCNNode) {
@@ -73,13 +81,18 @@ class SceneManager {
     }
     
     /// The planet to focus on, and how far away to place that planet after all scaling shenanigans are done
-    public func centerSystem(focusName: String, newCenter: SCNVector3) {
+    public func centerSystem(focusName: String) {
         guard let focusScenePlanet = planetMap[focusName] else {
             return
         }
         
-        focusPlanet = focusScenePlanet
-        offset = focusScenePlanet.rootNode.worldPosition
+        if(focusScenePlanet === focusPlanet || focusScenePlanet === planetMap[Planet.SUN.name]) {
+            focusPlanet = planetMap[Planet.SUN.name]
+            offset = SceneManager.worldOffset
+        } else {
+            focusPlanet = focusScenePlanet
+            offset = focusScenePlanet.rootNode.worldPosition
+        }
     }
     
     /// Update the scene
@@ -88,14 +101,30 @@ class SceneManager {
             return []
         }
         
-        // Position all planets based on 0,0,0
-        let scaledTime = systemTime * (Planet.ORBIT_TIME / Double(timeScale))
-        positionPlanet(scenePlanet: rootScenePlanet, atRealTime: scaledTime, parentPos: SCNVector3Make(0,0,0))
-        
         // Move planets to focus on one
         guard let focusScenePlanet = focusPlanet ?? planetMap[Planet.SUN.name] else {
             return []
         }
+        
+        // Passage of time
+        if(lastFrame == 0) {
+            elapsedTime = 0
+        } else {
+            elapsedTime = elapsedTime + (systemTime - lastFrame) * Double(timeScale)
+        }
+        lastFrame = systemTime
+        
+        // Scale the system up if we are focused on a planet
+        var currentSystemScale = self.systemSize
+        var currentPlanetScale = self.planetSize
+        if(rootScenePlanet !== focusScenePlanet) {
+            let zoomFactor = Planet.SOLAR_SYSTEM_SIZE / Planet.LUNA.orbitRadius
+            currentSystemScale = Float(Double(self.systemSize) * zoomFactor)
+            currentPlanetScale = Float(Double(self.planetSize) * zoomFactor)
+        }
+        
+        // Position all planets based on 0,0,0
+        positionPlanet(scenePlanet: rootScenePlanet, atRealTime: elapsedTime, parentPos: SCNVector3Make(0,0,0), withSystemScale: currentSystemScale, withPlanetScale: currentPlanetScale)
         
         let focusOffset = SCNVector3Make(-focusScenePlanet.rootNode.worldPosition.x, -focusScenePlanet.rootNode.worldPosition.y, -focusScenePlanet.rootNode.worldPosition.z)
         let totalOffset = SCNVector3Make(focusOffset.x + offset.x, focusOffset.y + offset.y, focusOffset.z + offset.z)
@@ -108,10 +137,17 @@ class SceneManager {
             return []
         }
         
-        // Move icons
+        // Update planet properties
         var iconPoints:[ScreenPlanet] = []
         for scenePlanet in planetMap.values {
-            if(isFocused(planet: scenePlanet.planet) && renderer.isNode(scenePlanet.rootNode, insideFrustumOf: pov)) {
+            let isFocus = isFocused(planet: scenePlanet.planet)
+            let isMain = scenePlanet.planet === Planet.SUN || Planet.SUN.children.contains(where: {
+                $0 === scenePlanet.planet
+            })
+            scenePlanet.setTappable(isFocus)
+
+            // Collect 2d position if it is visible
+            if((isFocus || isMain) && renderer.isNode(scenePlanet.rootNode, insideFrustumOf: pov)) {
                 let v = renderer.projectPoint(scenePlanet.rootNode.worldPosition)
                 let p = CGPoint(x: CGFloat(v.x), y: CGFloat(v.y))
                 
@@ -134,7 +170,7 @@ class SceneManager {
         })
     }
     
-    fileprivate func positionPlanet(scenePlanet: ScenePlanet, atRealTime: TimeInterval, parentPos: SCNVector3) {
+    fileprivate func positionPlanet(scenePlanet: ScenePlanet, atRealTime: TimeInterval, parentPos: SCNVector3, withSystemScale: Float, withPlanetScale: Float) {
         let orbitsCompleted: Double
         if(scenePlanet.planet.orbitPeriod > 0) {
             orbitsCompleted = atRealTime / scenePlanet.planet.orbitPeriod
@@ -144,7 +180,7 @@ class SceneManager {
         
         let orbitAngle = Double.pi * 2 * orbitsCompleted
         
-        let scaledDistance = scenePlanet.planet.scaledOrbit(solarSystemSize: systemSize)
+        let scaledDistance = scenePlanet.planet.scaledOrbit(solarSystemSize: withSystemScale)
         let scaledLocalPos = SCNVector3Make(Float(scaledDistance * cos(orbitAngle)), 0, Float(scaledDistance * sin(orbitAngle)))
         let scaledPos = SCNVector3Make(scaledLocalPos.x + parentPos.x, scaledLocalPos.y + parentPos.y, scaledLocalPos.z + parentPos.z)
 
@@ -153,12 +189,12 @@ class SceneManager {
         
         scenePlanet.rootNode.position = scaledPos
         scenePlanet.planetNode.rotation = SCNVector4Make(0, -1, 0, Float(rotationAngle))
-        scenePlanet.setScale(planetSize)
+        scenePlanet.setScale(withPlanetScale)
         
         // Position satellites
         for child in scenePlanet.planet.children {
             if let scenePlanet = planetMap[child.name] {
-                positionPlanet(scenePlanet: scenePlanet, atRealTime: atRealTime, parentPos: scaledPos)
+                positionPlanet(scenePlanet: scenePlanet, atRealTime: atRealTime, parentPos: scaledPos, withSystemScale: withSystemScale, withPlanetScale: withPlanetScale)
             }
         }
     }
