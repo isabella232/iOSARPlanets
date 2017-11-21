@@ -11,8 +11,8 @@ import SceneKit
 import ARKit
 
 class SceneManager {
-    private var _systemSize: Float = 3
-    private var _planetSize: Float = 0.05
+    private var _systemSize: Float = 4
+    private var _planetSize: Float = 0.04
     private var _timeScale: Float = 100
     
     private static let worldOffset = SCNVector3Make(-2, 0, -3)
@@ -124,10 +124,11 @@ class SceneManager {
         }
         
         // Position all planets based on 0,0,0
-        positionPlanet(scenePlanet: rootScenePlanet, atRealTime: elapsedTime, parentPos: SCNVector3Make(0,0,0), withSystemScale: currentSystemScale, withPlanetScale: currentPlanetScale)
+        positionPlanet(scenePlanet: rootScenePlanet, atRealTime: elapsedTime, parentPos: SCNVector3Make(0,0,0), parentRadius: rootScenePlanet.planetNode.scale.x, withSystemScale: currentSystemScale, withPlanetScale: currentPlanetScale)
         
         let focusOffset = SCNVector3Make(-focusScenePlanet.rootNode.worldPosition.x, -focusScenePlanet.rootNode.worldPosition.y, -focusScenePlanet.rootNode.worldPosition.z)
-        let totalOffset = SCNVector3Make(focusOffset.x + offset.x, focusOffset.y + offset.y, focusOffset.z + offset.z)
+        let radiusOffset = SCNVector3Make(0, 0, focusScenePlanet.planetNode.scale.z * 1.5) // Should be offset by radius*cameraDirection at the time of zooming
+        let totalOffset = SCNVector3Make(focusOffset.x + offset.x + radiusOffset.x, focusOffset.y + offset.y + radiusOffset.y, focusOffset.z + offset.z + radiusOffset.z)
         
         for scenePlanet in planetMap.values {
             scenePlanet.rootNode.localTranslate(by: totalOffset)
@@ -170,7 +171,7 @@ class SceneManager {
         })
     }
     
-    fileprivate func positionPlanet(scenePlanet: ScenePlanet, atRealTime: TimeInterval, parentPos: SCNVector3, withSystemScale: Float, withPlanetScale: Float) {
+    fileprivate func positionPlanet(scenePlanet: ScenePlanet, atRealTime: TimeInterval, parentPos: SCNVector3, parentRadius: Float, withSystemScale: Float, withPlanetScale: Float) {
         let orbitsCompleted: Double
         if(scenePlanet.planet.orbitPeriod > 0) {
             orbitsCompleted = atRealTime / scenePlanet.planet.orbitPeriod
@@ -180,7 +181,7 @@ class SceneManager {
         
         let orbitAngle = Double.pi * 2 * orbitsCompleted
         
-        let scaledDistance = scenePlanet.planet.scaledOrbit(solarSystemSize: withSystemScale)
+        let scaledDistance = scenePlanet.planet.scaledOrbit(solarSystemSize: withSystemScale) + Double(parentRadius) // <-- cheating
         let scaledLocalPos = SCNVector3Make(Float(scaledDistance * cos(orbitAngle)), 0, Float(scaledDistance * sin(orbitAngle)))
         let scaledPos = SCNVector3Make(scaledLocalPos.x + parentPos.x, scaledLocalPos.y + parentPos.y, scaledLocalPos.z + parentPos.z)
 
@@ -191,10 +192,12 @@ class SceneManager {
         scenePlanet.planetNode.rotation = SCNVector4Make(0, -1, 0, Float(rotationAngle))
         scenePlanet.setScale(withPlanetScale)
         
+        let radius = scenePlanet.planetNode.scale.x
+        
         // Position satellites
         for child in scenePlanet.planet.children {
             if let scenePlanet = planetMap[child.name] {
-                positionPlanet(scenePlanet: scenePlanet, atRealTime: atRealTime, parentPos: scaledPos, withSystemScale: withSystemScale, withPlanetScale: withPlanetScale)
+                positionPlanet(scenePlanet: scenePlanet, atRealTime: atRealTime, parentPos: scaledPos, parentRadius: radius, withSystemScale: withSystemScale, withPlanetScale: withPlanetScale)
             }
         }
     }
