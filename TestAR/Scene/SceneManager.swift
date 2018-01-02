@@ -11,11 +11,11 @@ import SceneKit
 import ARKit
 
 class SceneManager {
-    private var _systemSize: Float = 4
-    private var _planetSize: Float = 0.04
+    private var _systemSize: Float = 5
+    private var _planetSize: Float = 0.2
     private var _timeScale: Float = 100
     
-    private static let worldOffset = SCNVector3Make(-2, 0, -3)
+    private static let worldOffset = SCNVector3Make(-5.5, 0, -1.5)
     /// How far from origin should the focus planet be
     private var offset = worldOffset
     /// Which planet should be at the origin
@@ -120,7 +120,7 @@ class SceneManager {
         if(rootScenePlanet !== focusScenePlanet) {
             let zoomFactor = Planet.SOLAR_SYSTEM_SIZE / Planet.LUNA.orbitRadius
             currentSystemScale = Float(Double(self.systemSize) * zoomFactor)
-            currentPlanetScale = Float(Double(self.planetSize) * zoomFactor)
+            currentPlanetScale = Float(Double(self.planetSize) * zoomFactor * 0.1)
         }
         
         // Position all planets based on 0,0,0

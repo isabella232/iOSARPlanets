@@ -44,7 +44,7 @@ class Planet {
     static let NEPTUNE = Planet(name: "Neptune", image: #imageLiteral(resourceName: "NeptuneColor.png"), orbitRadius: 4.5029e12, orbitPeriod: 5.2e9, planetRadius: 24.622e6, planetPeriod: 57996)
     static let PLUTO = Planet(name: "Pluto", image: #imageLiteral(resourceName: "PlutoColor.png"), orbitRadius: 8.13064e12, orbitPeriod: 7820908000, planetRadius: 1.187e6, planetPeriod: 552096)
     
-    static let SUN = Planet(name: "Sol", image: #imageLiteral(resourceName: "sun.jpg"), orbitRadius: 0, orbitPeriod: 0, planetRadius: 695.7e6, planetPeriod: 2.074e+6,
+    static let SUN = Planet(name: "Sol", image: #imageLiteral(resourceName: "sun.jpg"), orbitRadius: 0, orbitPeriod: 0, planetRadius: /*695.7e6*/ 295.7e6, planetPeriod: 2.074e+6,
                             children: [MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE, PLUTO])
     
     public static let SOLAR_SYSTEM_SIZE: Double = EARTH.orbitRadius

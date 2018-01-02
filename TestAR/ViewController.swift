@@ -58,7 +58,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
         for screenPlanet in iconLocations {
             let node = SKShapeNode(circleOfRadius: 10)
-            node.position = CGPoint(x: screenPlanet.position.x, y: skScene.size.height - screenPlanet.position.y)
+            node.position = CGPoint(x: screenPlanet.position.x, y: skScene.frame.size.height - screenPlanet.position.y)
             
             //let radius: CGFloat = 10.0
             //node.path = UIBezierPath(roundedRect: CGRect(x: -radius, y: -radius, width: 2.0 * radius, height: 2.0 * radius), cornerRadius: radius).cgPath
@@ -76,38 +76,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         }
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Set the view's delegate
-        sceneView.delegate = self
-        sceneView.session.delegate = self
-        
-        // Show statistics such as fps and timing information
-        //sceneView.showsStatistics = true
-        sceneView.antialiasingMode = .multisampling4X
-
-        let manager = SceneManager()
-        sceneManager = manager
-        
-        // Set the scene to the view
-        sceneView.scene = SCNScene()
-        sceneView.scene.background.contents = [#imageLiteral(resourceName: "GalaxyTex_PositiveX.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeX.jpeg"),#imageLiteral(resourceName: "GalaxyTex_PositiveY.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeY.jpeg"),#imageLiteral(resourceName: "GalaxyTex_PositiveZ.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeZ.jpeg")]
-        sceneView.scene.rootNode.addChildNode(manager.rootNode)
-        sceneView.overlaySKScene = SKScene(size: sceneView.frame.size)
-        
-        if let camera = sceneView.pointOfView?.camera {
-            camera.zFar = 10000 // I can't use infinity :(
-            camera.zNear = 0.1
-        }
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTap(sender:)))
-        tapGesture.numberOfTapsRequired = 1
-        sceneView.addGestureRecognizer(tapGesture)
-        
-        updateTimeLabel()
-    }
-    
     fileprivate func updateTimeLabel() {
         let formatter = NumberFormatter()
         formatter.groupingSeparator = ","
@@ -148,6 +116,34 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Set the view's delegate
+        sceneView.delegate = self
+        sceneView.session.delegate = self
+        
+        // Show statistics such as fps and timing information
+        //sceneView.showsStatistics = true
+        sceneView.antialiasingMode = .multisampling4X
+        
+        let manager = SceneManager()
+        sceneManager = manager
+        
+        // Set the scene to the view
+        sceneView.scene = SCNScene()
+        //sceneView.scene.background.contents = [#imageLiteral(resourceName: "GalaxyTex_PositiveX.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeX.jpeg"),#imageLiteral(resourceName: "GalaxyTex_PositiveY.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeY.jpeg"),#imageLiteral(resourceName: "GalaxyTex_PositiveZ.jpeg"),#imageLiteral(resourceName: "GalaxyTex_NegativeZ.jpeg")]
+        sceneView.scene.rootNode.addChildNode(manager.rootNode)
+        sceneView.overlaySKScene = SKScene(size: sceneView.frame.size)
+        
+        if let camera = sceneView.pointOfView?.camera {
+            camera.zFar = 10000 // I can't use infinity :(
+            camera.zNear = 0.001
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTap(sender:)))
+        tapGesture.numberOfTapsRequired = 1
+        sceneView.addGestureRecognizer(tapGesture)
+        
+        updateTimeLabel()
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
